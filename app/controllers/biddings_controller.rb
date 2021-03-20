@@ -12,9 +12,9 @@ class BiddingsController < ApplicationController
 
   def create
     raise
-    @bidding = Bidding.new(bidding_params)
     @auction = Auction.find(params[:auction_id])
     @bidding.user = current_user
+    @bidding = Bidding.new(bidding_params)
     authorize @bidding
     if @bidding.save!
       update_auction

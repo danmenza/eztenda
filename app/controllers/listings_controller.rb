@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     authorize @listing
     if @listing.save
-      @auction = Auction.new(listing_id: @listing.id)
+      @auction = Auction.create!(listing_id: @listing.id)
       redirect_to listings_path
     else
       render :new

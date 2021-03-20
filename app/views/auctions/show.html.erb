@@ -17,7 +17,7 @@
           <p>£<%= @auction.current_price %></p>
       </div>
 
-      <%= simple_form_for [ @auction, @bidding ], url: auction_path(@auction), method: :get do |f| %>
+      <%= simple_form_for [ @bidding ], url: auction_path(@auction), method: :get do |f| %>
         <%= f.input :price, as: :integer %>
         <%= f.input :incentive, as: :text %>
 

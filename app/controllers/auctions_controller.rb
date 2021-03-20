@@ -21,9 +21,9 @@ class AuctionsController < ApplicationController
     @auction = Auction.find(params[:id])
     authorize @auction
     @biddings = @auction.biddings
-    @bidding = Bidding.create!(user_id: current_user.id, auction_id: @auction.id, price: params[:bidding][:price], incentive: params[:bidding][:incentive])
-    authorize @bidding
-    @auction.current_price = @bidding.price
+    @bidding = Bidding.new
+    @listing = @auction.listing
+    @auction.current_price = @listing.min_price
     @auction.save!
   end
 
