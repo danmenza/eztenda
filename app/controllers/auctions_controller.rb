@@ -1,4 +1,4 @@
-class AuctionController < ApplicationController
+class AuctionsController < ApplicationController
   def new
     @auction = Auction.new
   end
@@ -7,6 +7,7 @@ class AuctionController < ApplicationController
     @auction = Auction.new(auction_params)
     @auction.user = current_user
     @auction.listing = Listing.find(params[:listing_id])
+    @auction.current_price = @auction.listing.price
     if @auction.save
       redirect_to listing_path(@listing)
     else
@@ -15,10 +16,9 @@ class AuctionController < ApplicationController
   end
 
   def show
-    raise
     @auction = Auction.find(params[:id])
-    @bid = Bid.new(auction: @auction)
-    @bids = @auction.bids
+    @biddings = Bidding.new
+    @biddings = @auction.biddings
   end
 
   private

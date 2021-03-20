@@ -9,6 +9,8 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @auction = Auction.new
+    @bidding = Bidding.new
     @listing.user = current_user
     if @listing.save
       redirect_to listing_path(@listing)
@@ -19,7 +21,6 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    @bidding = Bidding.new
   end
 
   def edit
