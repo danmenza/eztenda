@@ -6,10 +6,19 @@
       <p><%= @listing.min_price %></p>
       <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill %>
 
-      <%= simple_form_for [ @listing, @bidding ], remote: true do |f| %>
+      <div class="bids">
+        <% if current_user.biddings.nil? %>
+          <ul>
+            <% @biddings.each do |bid| %>
+              <li><%= bib.price %> - <%= bid.current_user %></li>
+            <% end %>
+          </ul>
+          <% end %>
+      </div>
+
+      <%= simple_form_for [ @auction, @bidding ], remote: true do |f| %>
         <%= f.input :price, as: :integer %>
         <%= f.input :incentive, as: :text %>
-        <%= f.hidden_field :confirmation, default: :false%>
 
         <%= f.submit "Add Bid", class: "btn" %>
       <% end %>

@@ -4,16 +4,17 @@ class BiddingsController < ApplicationController
   end
 
   def new
-    @bidding = Bidding.new
-    @listing = Listing.find(params[:listing_id])
+    @bidding = Bidding.new(bidding_params)
+    @auction = Auction.find(params[:auction_id])
   end
 
   def create
     @bidding = Bidding.new(bidding_params)
-    @listing = Listing.find(params[:listing_id])
+    @auction = Auction.find(params[:auction_id])
     @bidding.user = current_user
-    if @bidding.save!
-      redirect_to listings_path(@listing)
+    if @bidding.save
+      update_auction
+      redirect_to listings_path(@listing), notice: "Bid Submitted!"
     else
       render :new
     end
@@ -21,7 +22,12 @@ class BiddingsController < ApplicationController
 
   private
 
-  def booking_params
+  def bidding_params
     params.require(:bidding).permit(:price, :incentive)
+  end
+
+  def update_auction
+    @auction.current_price = @bidding.price
+    @auction.save!
   end
 end
