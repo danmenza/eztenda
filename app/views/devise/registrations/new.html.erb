@@ -1,4 +1,15 @@
-<h2>Sign up</h2>
+
+<body>
+
+<div class="container">
+
+  <div class="row justify-content-center">
+
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+
+        <div class="form-login">
+
+            <h2 class="text-center">Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -15,11 +26,48 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name,
+                #required: true,
+                input_html: { autocomplete: "Company name" } %>
+    <%= f.input :business_type,
+                required: true,
+                input_html: { autocomplete: "Business type" } %>
+    <%= f.input :location,
+                required: true,
+                input_html: { autocomplete: "Location" } %>
+    <%= f.input :name,
+                required: true,
+                input_html: { autocomplete: "Company name" } %>
+    <%= f.input :phone,
+                required: true,
+                input_html: { autocomplete: "phone number" } %>
+    <%= f.input :venue,
+                required: true,
+                input_html: { autocomplete: "venue" } %>
+    <p>
+    Are you a Company or a bar?
+  </p>
+
+    <input type="radio" id="" name="type" value="Bar">
+<label for="Bar">Bar</label><br>
+<input type="radio" id="bar" name="type" value="Brand">
+<label for="Brand">Brand</label><br>
+
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
+      </div>
+
+    </div>
+
+      </div>
+
+    </div>
+
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
+</body>
