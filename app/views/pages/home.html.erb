@@ -25,11 +25,11 @@
               <div class="card-title mb-0"> <h3> <%= listing.name %> </h3> </div>
               <div class="card-description">
                 <p class="card-info mb-2"> <%= listing.description %> </p>
-                <h4 class="mb-4"> <%= listing.auction ? listing.auction.current_price : 0 %> £ </h4>
+                <h4 class="mb-4"> <%= listing.auction ? listing.auction.current_price : listing.min_price %> £ </h4>
               </div>
               <div class="row">
                 <div class="col-6">
-                  <% if current_user.photo.attached? %>
+                  <% if user_signed_in? %>
                     <% card_image = current_user.photo.key %>
                     <%= cl_image_tag card_image, class: 'card-logo shadow'%>
                   <% else %>
