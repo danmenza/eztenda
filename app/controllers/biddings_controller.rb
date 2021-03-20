@@ -5,6 +5,7 @@ class BiddingsController < ApplicationController
 
   def new
     @bidding = Bidding.new
+    @listing = Listing.find(params[:listing_id])
   end
 
   def create
@@ -12,7 +13,7 @@ class BiddingsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @bidding.user = current_user
     if @bidding.save!
-      redirect_to listings_path
+      redirect_to listings_path(@listing)
     else
       render :new
     end

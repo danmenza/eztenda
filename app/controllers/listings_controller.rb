@@ -19,6 +19,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @bidding = Bidding.new
   end
 
   def edit
