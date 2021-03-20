@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+
+      <p><%= @auction.listing.drink_category %></p>
+      <p><%= @auction.listing.min_price %></p>
+      <%= cl_image_tag @auction.listing.photo.key, height: 300, width: 400, crop: :fill %>
+
+      <div class="bids">
+        <% if @biddings.nil? %>
+          <ul>
+            <% @biddings.each do |bid| %>
+              <li><%= bid.price %> - <%= bid.current_user %></li>
+            <% end %>
+          </ul>
+          <% end %>
+          <p>£<%= @auction.current_price %></p>
+      </div>
+
+      <%= simple_form_for [ @auction, @bidding ], url: auction_path(@auction), method: :get do |f| %>
+        <%= f.input :price, as: :integer %>
+        <%= f.input :incentive, as: :text %>
+
+        <%= f.submit "Add Bid", class: "btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>

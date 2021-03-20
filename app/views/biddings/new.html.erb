@@ -1,13 +1,1 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <%= simple_form_for @bidding do |f| %>
-        <%= f.input :price, as: :integer %>
-        <%= f.input :incentive, as: :text %>
-        <%= f.hidden_field :confirmation, default: :false%>
 
-        <%= f.submit "Add bid", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-</div>
