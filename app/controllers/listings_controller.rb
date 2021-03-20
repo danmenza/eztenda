@@ -13,7 +13,8 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     authorize @listing
     if @listing.save
-      redirect_to listing_path(@listing)
+      @auction = Auction.new(listing_id: @listing.id)
+      redirect_to listings_path
     else
       render :new
     end
@@ -44,6 +45,6 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    params.require(:listing).permit(:quantity, :drink_category, :start_date, :end_date, :description, :min_price, :wholesaler, :photo, :marketing)
+    params.require(:listing).permit(:name, :quantity, :drink_category, :start_date, :end_date, :description, :min_price, :wholesaler, :photo, :marketing)
   end
 end
