@@ -22,6 +22,6 @@ class BiddingsController < ApplicationController
   private
 
   def booking_params
-    raise
+    params.require(:bidding).permit(:price, :incentive)
   end
 end
