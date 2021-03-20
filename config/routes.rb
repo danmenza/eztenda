@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
   resources :biddings, only: [:index, :show]
   get '/offers', to: 'pages#offers'
+  get 'dashboard', to: 'pages#dashboard'
 end
