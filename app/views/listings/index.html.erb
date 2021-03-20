@@ -8,11 +8,16 @@
           <div class="card-title mb-0"> <h3> Name<%= listing.name %> </h3> </div>
           <div class="card-description">
             <p class="card-info mb-2"> Description: <%= listing.description %> </p>
-            <h4 class="mb-4"> Price: <%= listing.biddings != [] ? listing.biddings.last.price : 0 %> </h4>
+            <h4 class="mb-4"> Price: <%= listing.auction ? listing.auction.last.current_price : 0 %> </h4>
           </div>
           <div class="row">
             <div class="col-6">
-              <img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm45-minty-c-08-goldframe_1_2.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=3b8a280a6c1fdf4bc1ad4c1abd0dbbc5" alt="logo" class="card-logo shadow">
+              <% if current_user.photo.attached? %>
+                <% card_image = current_user.photo.key %>
+                <%= cl_image_tag card_image, class: 'card-logo shadow'%>
+              <% else %>
+                <img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm45-minty-c-08-goldframe_1_2.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=3b8a280a6c1fdf4bc1ad4c1abd0dbbc5" alt="logo" class="card-logo shadow">
+              <% end %>
             </div>
             <div class="col-6">
               <h4 class="mb-1"> Name: <%= listing.user.name %> </h4>
