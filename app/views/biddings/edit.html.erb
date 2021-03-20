@@ -5,8 +5,8 @@
         <%= f.input :price, as: :integer %>
         <%= f.input :incentive, as: :text %>
         <%= f.hidden_field :confirmation, default: :false%>
-
-        <%= f.submit "Add bid", class: "btn btn-primary" %>
+        <%= f.submit "Update bid", class: "btn btn-primary" %>
+        <%= link_to "Delete bid", bidding_path(@bidding), method: :delete, data: {Confirm: "delete bidding?"}, class: "btn btn-outline-danger" %>
       <% end %>
     </div>
   </div>
