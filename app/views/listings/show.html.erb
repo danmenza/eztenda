@@ -4,7 +4,6 @@
 
       <p><%= @listing.drink_category %></p>
       <p><%= @listing.min_price %></p>
-      <p><%= @listing.current_price %></p>
       <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill %>
 
       <%= simple_form_for [ @listing, @bidding ], remote: true do |f| %>
