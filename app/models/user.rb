@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :biddings
+  has_many :auctions, through: :biddings
   has_many :listings
 end

@@ -1,4 +1,5 @@
 class Auction < ApplicationRecord
   belongs_to :listing
-  belongs_to :bidding
+  has_many :biddings
+  has_many :users, through: :biddings
 end
