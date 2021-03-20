@@ -9,11 +9,10 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
-    @auction = Auction.new
-    @bidding = Bidding.new
     @listing.user = current_user
     if @listing.save
-      redirect_to listing_path(@listing)
+      @auction = Auction.new(listing_id: @listing.id)
+      redirect_to listings_path
     else
       render :new
     end

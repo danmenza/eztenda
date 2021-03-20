@@ -5,11 +5,11 @@ class AuctionsController < ApplicationController
 
   def create
     @auction = Auction.new(auction_params)
-    @auction.user = current_user
+    @bidding = Bidding.new
     @auction.listing = Listing.find(params[:listing_id])
     @auction.current_price = @auction.listing.price
     if @auction.save
-      redirect_to listing_path(@listing)
+      redirect_to auction_path(@auction)
     else
       render :new
     end
@@ -17,13 +17,13 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
-    @biddings = Bidding.new
+    @bidding = Bidding.create!(user_id: current_user.id, auction_id: @auction.id)
     @biddings = @auction.biddings
   end
 
   private
 
   def auction_params
-    params.require(:auction).permit(:current_price, :confirmation, :listing_id)
+    params.permit(:current_price, :confirmation, :listing_id)
   end
 end

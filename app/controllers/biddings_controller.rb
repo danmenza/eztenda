@@ -9,7 +9,6 @@ class BiddingsController < ApplicationController
   end
 
   def create
-    raise
     @bidding = Bidding.new(bidding_params)
     @auction = Auction.find(params[:auction_id])
     @bidding.user = current_user

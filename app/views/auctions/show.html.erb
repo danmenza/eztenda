@@ -7,21 +7,22 @@
       <%= cl_image_tag @auction.listing.photo.key, height: 300, width: 400, crop: :fill %>
 
       <div class="bids">
-        <% if current_user.biddings.nil? %>
+        <% if @biddings.nil? %>
           <ul>
             <% @biddings.each do |bid| %>
               <li><%= bid.price %> - <%= bid.current_user %></li>
             <% end %>
           </ul>
           <% end %>
+          <%= @auction.current_price %>
       </div>
 
-      <%#= simple_form_for [ @auction ], remote: true do |f| %>
-        <%#= f.input :price, as: :integer %>
-        <%#= f.input :incentive, as: :text %>
+      <%= simple_form_for [ @auction, @bidding ], url: auction_biddings_path(@auction), method: :post do |f| %>
+        <%= f.input :price, as: :integer %>
+        <%= f.input :incentive, as: :text %>
 
-        <%#= f.submit "Add Bid", class: "btn" %>
-      <%# end %>
+        <%= f.submit "Add Bid", class: "btn" %>
+      <% end %>
     </div>
   </div>
 </div>
