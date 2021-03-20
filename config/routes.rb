@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   resources :biddings, only: [:edit, :update, :index, :destroy, :show]
   get '/offers', to: 'pages#offers'
+  get 'dashboard', to: 'pages#dashboard'
 end

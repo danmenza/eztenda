@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="text-center p-4">Dashboard</h2>
+
+ <% current_user.listings.each do |listing| %>
+
+  <div class="row main-dash">
+
+
+    <div class="col-sm">
+    <p> your current listing: <%=listing.name%> </p>
+
+    </div>
+
+
+      <div class="col-sm">
+        <p>Bidding status</p>
+         </div>
+
+         <div class="col-sm">
+   <button>Edit</button>
+   </div>
+
+
+
+     </div>
+
+    <% end %>
+</div>
+
+
+
+
+
+
+
+
