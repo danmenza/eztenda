@@ -27,31 +27,29 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :name,
-                #required: true,
-                input_html: { autocomplete: "Company name" } %>
-    <%= f.input :business_type,
                 required: true,
-                input_html: { autocomplete: "Business type" } %>
+                input_html: { autocomplete: "Company name" } %>
     <%= f.input :location,
                 required: true,
                 input_html: { autocomplete: "Location" } %>
-    <%= f.input :name,
-                required: true,
-                input_html: { autocomplete: "Company name" } %>
     <%= f.input :phone,
                 required: true,
                 input_html: { autocomplete: "phone number" } %>
     <%= f.input :venue,
                 required: true,
                 input_html: { autocomplete: "venue" } %>
-    <p>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :business_type,
+                required: true,
+                input_html: { autocomplete: "Business type" } %>
+    <!-- <p>
     Are you a Company or a bar?
-  </p>
+  </p> -->
 
-    <input type="radio" id="" name="type" value="Bar">
+    <!-- <input type="radio" id="" name="type" value="Bar">
 <label for="Bar">Bar</label><br>
 <input type="radio" id="bar" name="type" value="Brand">
-<label for="Brand">Brand</label><br>
+<label for="Brand">Brand</label><br> -->
 
   </div>
   <br>
