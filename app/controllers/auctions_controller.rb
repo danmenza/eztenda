@@ -5,7 +5,7 @@ class AuctionsController < ApplicationController
 
   def create
     @auction = Auction.new(auction_params)
-    @bidding = Bidding.new
+    @bidding = Bidding.create
     @auction.listing = Listing.find(params[:listing_id])
     @auction.current_price = @auction.listing.price
     if @auction.save
@@ -17,8 +17,10 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
-    @bidding = Bidding.create!(user_id: current_user.id, auction_id: @auction.id)
     @biddings = @auction.biddings
+    @bidding = Bidding.create(user_id: current_user.id, auction_id: @auction.id, price: params[:bidding][:price], incentive: params[:bidding][:incentive])
+    @auction.current_price = @bidding.price
+    @auction.save!
   end
 
   private

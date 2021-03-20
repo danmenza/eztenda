@@ -14,10 +14,10 @@
             <% end %>
           </ul>
           <% end %>
-          <%= @auction.current_price %>
+          <p>£<%= @auction.current_price %></p>
       </div>
 
-      <%= simple_form_for [ @auction, @bidding ], url: auction_biddings_path(@auction), method: :post do |f| %>
+      <%= simple_form_for [ @auction, @bidding ], url: auction_path(@auction), method: :get do |f| %>
         <%= f.input :price, as: :integer %>
         <%= f.input :incentive, as: :text %>
 
