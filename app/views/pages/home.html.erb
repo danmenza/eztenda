@@ -22,10 +22,10 @@
         <div class="col-4">
           <div class="card shadow">
             <div class="card-body">
-              <div class="card-title mb-0"> <h3> Name<%= listing.name %> </h3> </div>
+              <div class="card-title mb-0"> <h3> <%= listing.name %> </h3> </div>
               <div class="card-description">
-                <p class="card-info mb-2"> Description: <%= listing.description %> </p>
-                <h4 class="mb-4"> Price: <%= listing.auction ? listing.auction.last.current_price : 0 %> </h4>
+                <p class="card-info mb-2"> <%= listing.description %> </p>
+                <h4 class="mb-4"> <%= listing.auction ? listing.auction.current_price : 0 %> £ </h4>
               </div>
               <div class="row">
                 <div class="col-6">
