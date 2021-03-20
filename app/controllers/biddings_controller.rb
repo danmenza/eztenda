@@ -1,12 +1,13 @@
 class BiddingsController < ApplicationController
   def index
-    @biddings = Bidding.all
+    @biddings = policy_scope(Bidding)
   end
 
   def new
     raise
     @bidding = Bidding.new(bidding_params)
     @auction = Auction.find(params[:auction_id])
+    authorize @bidding
   end
 
   def create
@@ -14,7 +15,8 @@ class BiddingsController < ApplicationController
     @bidding = Bidding.new(bidding_params)
     @auction = Auction.find(params[:auction_id])
     @bidding.user = current_user
-    if @bidding.save
+    authorize @bidding
+    if @bidding.save!
       update_auction
       redirect_to listings_paths, notice: "Bid Submitted!"
     else
