@@ -29,14 +29,7 @@ class BiddingPolicy < ApplicationPolicy
     return true
   end
 
-  def send_to_slack?
-    return true
-  end
-
   def destroy?
-    return true
-  end
-  def share?
     return true
   end
 end
