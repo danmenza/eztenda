@@ -1,1 +1,30 @@
-
+<div class="container p-4">
+  <h1 class="text-center p-5"> LISTINGS</h1>
+  <div class="row">
+    <% @listings.each do |listing| %>
+    <div class="col-4 mb-5">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="card-title mb-0"> <h3> Name<%= listing.name %> </h3> </div>
+          <div class="card-description">
+            <p class="card-info mb-2"> Description: <%= listing.description %> </p>
+            <h4 class="mb-4"> Price: <%= listing.biddings != [] ? listing.biddings.last.price : 0 %> </h4>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm45-minty-c-08-goldframe_1_2.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=3b8a280a6c1fdf4bc1ad4c1abd0dbbc5" alt="logo" class="card-logo shadow">
+            </div>
+            <div class="col-6">
+              <h4 class="mb-1"> Name: <%= listing.user.name %> </h4>
+              <p class="card-info"> Business type: <%= listing.user.business_type %> </p>
+              <p class="card-info"> Location: <%= listing.user.location %> </p>
+              <%= link_to "More", "#", class: "card-info text-dark" %>
+            </div>
+          </div>
+          <div class="btn btn-danger card-button"> Join </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
