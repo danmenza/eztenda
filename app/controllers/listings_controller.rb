@@ -1,7 +1,11 @@
 class ListingsController < ApplicationController
   def index
-    @listings = policy_scope(Listing)
-    @auctions = Auction.all
+    if params[:query].present?
+      listing = policy_scope(Listing)
+      @listings = listing.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @listings = policy_scope(Listing)
+    end
   end
 
   def new
