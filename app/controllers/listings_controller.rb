@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   def index
     @listings = policy_scope(Listing)
+    @auctions = Auction.all
   end
 
   def new
