@@ -1,30 +1,30 @@
-<div class="container">
+<div class="container dash-container">
   <h2 class="text-center p-4">Dashboard</h2>
 
- <% current_user.listings.each do |listing| %>
+  <div class="row main-dash bg-danger text-light">
+    <div class="col-4"> Your listings </div>
+    <div class="col-4"> Bidding status </div>
+  </div>
 
-  <div class="row main-dash">
+  <% current_user.listings.each do |listing| %>
 
+    <div class="row main-dash">
+      <div class="col-4">
+        <p> <%=listing.name%> </p>
+      </div>
+      <div class="col-4">
+        <p> Ongoing </p>
+      </div>
 
-    <div class="col-sm">
-    <p> your current listing: <%=listing.name%> </p>
-
+      <div class="col-4">
+        <% auction = @auctions.find_by(listing_id: listing.id) %>
+        <%= link_to 'View', auction_path(auction), class: "btn btn-info"%>
+      </div>
     </div>
 
+  <% end %>
+</div>
 
-      <div class="col-sm">
-        <p>Bidding status</p>
-         </div>
-
-         <div class="col-sm">
-   <button>Edit</button>
-   </div>
-
-
-
-     </div>
-
-    <% end %>
     <% grouped = current_user.biddings.group_by do |bid| %>
       <% bid.auction_id %>
     <% end %>
@@ -39,14 +39,7 @@
           <p>Current Price: £<%= @auctions.find(auction_recent_bid.auction_id).current_price %> </p>
       </div>
     <% end %>
-    </div>
-<!--     <li><%#= grouped %> </li>
+    </div>   
+<li> <%#= grouped %> </li>
 </div>
-
-
-
-
-
-
-
 
