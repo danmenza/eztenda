@@ -8,7 +8,7 @@
     </div>
 
       <div class="bids col-6 p-5">
-        <%# if @biddings.nil? %>
+       
 <h3> Listing Name: <%= @auction.listing.name %></h3>
       <p>Listing Category: <%= @auction.listing.drink_category %></p>
       <p>(Minimum Price: £<%= @auction.listing.min_price %>)</p>
@@ -16,8 +16,8 @@
 
 
 
-
-          <%# end %>
+    
+    
           <p>Curent bidding price: £<%= @auction.current_price %></p>
 
 
