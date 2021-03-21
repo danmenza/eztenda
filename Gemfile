@@ -35,7 +35,7 @@ gem 'cloudinary', '~> 1.16.0'
 
 # Gemfile
 gem 'pundit'
-
+gem 'turbolinks_render'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'

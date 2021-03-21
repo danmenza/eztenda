@@ -11,10 +11,14 @@ class AuctionsController < ApplicationController
     @auction.listing = Listing.find(params[:listing_id])
     @auction.current_price = @auction.listing.price
     if @auction.save
-      redirect_to auction_path(@auction)
+       auction_path(@auction)
     else
       render :new
     end
+  end
+
+  def index
+    @auctions = policy_scope(Auction)
   end
 
   def show
@@ -23,8 +27,8 @@ class AuctionsController < ApplicationController
     @biddings = @auction.biddings
     @bidding = Bidding.new
     @listing = @auction.listing
-    @auction.current_price = @listing.min_price
-    @auction.save!
+    # @auction.current_price = @listing.min_price
+    # @auction.save!
   end
 
   private
