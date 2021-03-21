@@ -26,9 +26,6 @@ class AuctionsController < ApplicationController
     authorize @auction
     @biddings = @auction.biddings
     @bidding = Bidding.new
-    @listing = @auction.listing
-    # @auction.current_price = @listing.min_price
-    # @auction.save!
   end
 
   private
