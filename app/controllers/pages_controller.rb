@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @listings = Listing.all
+    @auctions = Auction.all
   end
 
   def dashboard

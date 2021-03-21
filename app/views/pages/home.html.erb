@@ -43,12 +43,15 @@
                   <%= link_to "More", "#", class: "card-info text-dark" %>
                 </div>
               </div>
-              <div class="btn btn-danger card-button"> Join </div>
+              <% listing_auction = @auctions.select { |auction| auction.listing_id == listing.id } %>
+              <% if !listing_auction.empty? %>
+              <%= link_to "Bid Now", auction_path(listing_auction.first.id), class: "btn btn-danger card-button" %>
+              <% end %>
             </div>
           </div>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
