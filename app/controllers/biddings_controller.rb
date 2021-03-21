@@ -33,6 +33,8 @@ class BiddingsController < ApplicationController
     if @bidding.price > @auction.current_price
       @auction.current_price = @bidding.price
       @auction.save!
+    else
+      @auction.current_price = @auction.listing.min_price
     end
   end
 end

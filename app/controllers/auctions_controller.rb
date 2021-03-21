@@ -9,8 +9,8 @@ class AuctionsController < ApplicationController
     @bidding = Bidding.create
     authorize @bidding
     @auction.listing = Listing.find(params[:listing_id])
-    @auction.current_price = @auction.listing.price
-    if @auction.save
+    @auction.current_price = @auction.listing.min_price
+    if @auction.save!
        auction_path(@auction)
     else
       render :new

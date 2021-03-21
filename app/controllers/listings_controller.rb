@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   def index
+    @auctions = Auction.all
     if params[:query].present?
       listing = policy_scope(Listing)
       @listings = listing.where("name ILIKE ?", "%#{params[:query]}%")
@@ -18,7 +19,7 @@ class ListingsController < ApplicationController
     @listing.user = current_user
     authorize @listing
     if @listing.save
-      @auction = Auction.create!(listing_id: @listing.id)
+      @auction = Auction.create!(listing_id: @listing.id, current_price: @listing.min_price)
       redirect_to listings_path
     else
       render :new
