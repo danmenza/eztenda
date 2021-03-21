@@ -23,23 +23,24 @@
     </div>
 
   <% end %>
-</div>
 
+  <h3 class="text-center p-3"> Biddings </h3>
     <% grouped = current_user.biddings.group_by do |bid| %>
       <% bid.auction_id %>
     <% end %>
+
     <div class="bid-cards">
     <% grouped.each do |bid| %>
       <div class="bid-info">
         <% auction_recent_bid = bid[1].last %>
-          <h5>Descripion: <%= auction_recent_bid.auction.listing.description %></h5>
+          <h5>Description: <%= auction_recent_bid.auction.listing.description %></h5>
           <p>Bid Price: £<%= auction_recent_bid.price %></p>
           <p>Perks: <%= auction_recent_bid.incentive %></p>
           <p>Brand Name: <%= auction_recent_bid.user.name %></p>
           <p>Current Price: £<%= @auctions.find(auction_recent_bid.auction_id).current_price %> </p>
       </div>
     <% end %>
-    </div>   
-<li> <%#= grouped %> </li>
+    </div>
+</div>
 </div>
 
