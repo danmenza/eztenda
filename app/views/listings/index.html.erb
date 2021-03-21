@@ -23,7 +23,9 @@
               <h4 class="mb-1"> Name: <%= listing.user.name %> </h4>
               <p class="card-info"> Business type: <%= listing.user.business_type %> </p>
               <p class="card-info"> Location: <%= listing.user.location %> </p>
-              <%= link_to "More", "#", class: "card-info text-dark" %>
+              <% lising_auction = @auctions.select { |auction| auction.listing_id == listing.id } %>
+              <% raise %>
+              <%= link_to "Bid Now", auction_path(lising_auction), class: "card-info text-dark" %>
             </div>
           </div>
           <div class="btn btn-danger card-button"> Join </div>
