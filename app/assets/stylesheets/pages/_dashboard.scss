@@ -16,3 +16,17 @@
     font-weight: bold;
   }
   }
+
+
+.bid-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.bid-info {
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px lightgrey;
+}

@@ -1,28 +1,33 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-6 p-5">
 
-      <p><%= @auction.listing.drink_category %></p>
-      <p>£<%= @auction.listing.min_price %></p>
+
+
       <%= cl_image_tag @auction.listing.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
 
-      <div class="bids">
-        <%# if @biddings.nil? %>
-          <ul>
-            <% @biddings.each do |bid| %>
-              <li>£<%= bid.price %> - <%= bid.incentive %> -  <%= bid.user_id %></li>
-            <% end %>
-          </ul>
-          <%# end %>
-          <p>£<%= @auction.current_price %></p>
-      </div>
+      <div class="bids col-6 p-5">
+       
+<h3> Listing Name: <%= @auction.listing.name %></h3>
+      <p>Listing Category: <%= @auction.listing.drink_category %></p>
+      <p>(Minimum Price: £<%= @auction.listing.min_price %>)</p>
+
+
+
+
+    
+    
+          <p>Curent bidding price: £<%= @auction.current_price %></p>
+
 
       <%= simple_form_for [ @bidding ], url: auction_biddings_path(@auction), method: :post, remote: true do |f| %>
         <%= f.input :price, as: :integer %>
         <%= f.input :incentive, as: :text %>
+      </div>
 
-        <%= f.submit "Add Bid", class: "btn" %>
+        <%= f.submit "Add Bid", class: "btn btn-primary" %>
       <% end %>
-    </div>
+
   </div>
 </div>

@@ -30,7 +30,9 @@ class BiddingsController < ApplicationController
   end
 
   def update_auction
-    @auction.current_price = @bidding.price
-    @auction.save!
+    if @bidding.price > @auction.current_price
+      @auction.current_price = @bidding.price
+      @auction.save!
+    end
   end
 end
