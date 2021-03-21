@@ -10,7 +10,7 @@
         <%# if @biddings.nil? %>
           <ul>
             <% @biddings.each do |bid| %>
-              <li>£<%= bid.price %> - <%= bid.incentive %> -  <%= bid.user_id %></li>
+              <li>£<%= bid.price %> - <%= bid.incentive %> -  <%= bid.user.name %></li>
             <% end %>
           </ul>
           <%# end %>

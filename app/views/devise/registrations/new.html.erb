@@ -41,6 +41,7 @@
     <%= f.input :photo, as: :file %>
     <%= f.input :business_type,
                 required: true,
+                collection: ["Venue", "Drinks Brand"],
                 input_html: { autocomplete: "Business type" } %>
     <!-- <p>
     Are you a Company or a bar?
