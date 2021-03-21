@@ -29,7 +29,7 @@
           <div class="card-button">
             <% listing_auction = @auctions.select { |auction| auction.listing_id == listing.id } %>
             <% if !listing_auction.empty? %>
-              <%= link_to "Bid Now", auction_path(listing_auction.first.id), class: "card-info text-dark btn btn-success" %>
+              <%= link_to "Bid Now", auction_path(listing_auction.first.id), class: "text-dark btn btn-success" %>
             <% end %>
           </div>
         </div>
