@@ -1,6 +1,6 @@
 // custom card styling
 .card-description{
-  // height: 200px;
+  height: 200px;
 }
 
 .card-body {
@@ -15,9 +15,9 @@
 }
 
 .card-button {
-  position: absolute;
-  bottom: -20px;
-  right: 90px;
+  position: relative;
+  top: 2.5rem;
+  left: 5.5rem;
 }
 
 .card-logo {
