@@ -8,18 +8,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-          <% if user_signed_in? %>
-          <%= form_tag listings_path, method: :get do %>
+    <% if user_signed_in? %>
+          <%= form_tag listings_path, method: :get, class: 'form-inline' do %>
           <%= text_field_tag :query,
           params[:query],
           class: "form-control",
             placeholder: "Find a listing"
             %>
-            <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+            <%= submit_tag "Search", class: "form-control btn btn-outline-secondary" %>
             <% end %>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
